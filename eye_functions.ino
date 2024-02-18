@@ -41,6 +41,7 @@ void initEyes(void)
     eye[e].tft_cs      = eyeInfo[e].select;
     eye[e].blink.state = NOBLINK;
     eye[e].xposition   = eyeInfo[e].xposition;
+    eye[e].yposition   = eyeInfo[e].yposition;
 
     pinMode(eye[e].tft_cs, OUTPUT);
     digitalWrite(eye[e].tft_cs, LOW);
@@ -111,7 +112,7 @@ void drawEye( // Renders one eye.  Inputs must be pre-clipped & valid.
   // reset on each frame here in case of an SPI glitch.
   digitalWrite(eye[e].tft_cs, LOW);
   tft.startWrite();
-  tft.setAddrWindow(eye[e].xposition, 0, 128, 128);
+  tft.setAddrWindow(eye[e].xposition, eyeInfo[e].yposition, 128, 128);
 
   // Now just issue raw 16-bit values for every pixel...
 
