@@ -56,6 +56,7 @@ typedef struct {        // Struct is defined before including config.h --
   int8_t  wink;         // and wink button (or -1 if none) specified there,
   uint8_t rotation;     // also display rotation and the x offset
   int16_t xposition;    // position of eye on the screen
+  int16_t yposition;  // vertical position of eye on the screen
 } eyeInfo_t;
 
 #include "config.h"     // ****** CONFIGURATION IS DONE IN HERE ******
@@ -77,6 +78,7 @@ struct {                // One-per-eye structure
   int16_t   tft_cs;     // Chip select pin for each display
   eyeBlink  blink;      // Current blink/wink state
   int16_t   xposition;  // x position of eye image
+  int16_t   yposition;  // y position of eye image
 } eye[NUM_EYES];
 
 uint32_t startTime;  // For FPS indicator
