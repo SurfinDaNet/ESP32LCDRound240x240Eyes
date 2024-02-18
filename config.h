@@ -13,7 +13,7 @@
 
 // Enable ONE of these #includes -- HUGE graphics tables for various eyes:
 #include "data/defaultEye.h"      // Standard human-ish hazel eye -OR-
-// #include "data/dragonEye.h"     // Slit pupil fiery dragon/demon eye -OR-
+//#include "data/dragonEye.h"     // Slit pupil fiery dragon/demon eye -OR-
 // #include "data/noScleraEye.h"   // Large iris, no sclera -OR-
 // #include "data/goatEye.h"       // Horizontal pupil goat/Krampus eye -OR-
 // #include "data/newtEye.h"       // Eye of newt -OR-
@@ -24,19 +24,21 @@
 // #include "data/doeEye.h"        // Cartoon deer eye (DISABLE TRACKING)
 
 // DISPLAY HARDWARE SETTINGS (screen type & connections) -------------------
-#define TFT_COUNT 1        // Number of screens (1 or 2)
-#define TFT1_CS -1 //15         // TFT 1 chip select pin (set to -1 to use TFT_eSPI setup)
-#define TFT2_CS -1 //14         // TFT 2 chip select pin (set to -1 to use TFT_eSPI setup)
+#define TFT_COUNT 2        // Number of screens (1 or 2)
+#define TFT1_CS 15         // TFT 1 chip select pin (set to -1 to use TFT_eSPI setup)
+#define TFT2_CS 14         // TFT 2 chip select pin (set to -1 to use TFT_eSPI setup)
 #define TFT_1_ROT 2        // TFT 1 rotation
-#define TFT_2_ROT 0        // TFT 2 rotation
-#define EYE_1_XPOSITION  50  // x shift for eye 1 image on display
-#define EYE_2_XPOSITION  50  // x shift for eye 2 image on display
+#define TFT_2_ROT 2        // TFT 2 rotation
+#define EYE_1_XPOSITION  60  // x shift for eye 1 image on display
+#define EYE_2_XPOSITION  60  // x shift for eye 2 image on display
+#define EYE_1_YPOSITION  65  // y shift for eye 1 image on display
+#define EYE_2_YPOSITION  65  // y shift for eye 2 image on display
 
 #define DISPLAY_BACKLIGHT  -1 // Pin for backlight control (-1 for none)
 #define BACKLIGHT_MAX    255
 
 // EYE LIST ----------------------------------------------------------------
-#define NUM_EYES 1 // Number of eyes to display (1 or 2)
+#define NUM_EYES 2 // Number of eyes to display (1 or 2)
 
 #define BLINK_PIN   -1 // Pin for manual blink button (BOTH eyes)
 #define LH_WINK_PIN -1 // Left wink pin (set to -1 for no pin)
@@ -50,12 +52,12 @@
 
 #if (NUM_EYES == 2)
   eyeInfo_t eyeInfo[] = {
-    { TFT1_CS, LH_WINK_PIN, TFT_1_ROT, EYE_1_XPOSITION }, // LEFT EYE chip select and wink pins, rotation and offset
-    { TFT2_CS, RH_WINK_PIN, TFT_2_ROT, EYE_2_XPOSITION }, // RIGHT EYE chip select and wink pins, rotation and offset
+    { TFT1_CS, LH_WINK_PIN, TFT_1_ROT, EYE_1_XPOSITION, EYE_1_YPOSITION }, // LEFT EYE chip select and wink pins, rotation and offset
+    { TFT2_CS, RH_WINK_PIN, TFT_2_ROT, EYE_2_XPOSITION, EYE_2_YPOSITION }, // RIGHT EYE chip select and wink pins, rotation and offset
   };
 #else
   eyeInfo_t eyeInfo[] = {
-    { TFT1_CS, LH_WINK_PIN, TFT_1_ROT, EYE_1_XPOSITION }, // EYE chip select and wink pins, rotation and offset
+    { TFT1_CS, LH_WINK_PIN, TFT_1_ROT, EYE_1_XPOSITION, EYE_1_YPOSITION }, // EYE chip select and wink pins, rotation and offset
   };
 #endif
 
